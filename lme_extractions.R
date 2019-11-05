@@ -2,8 +2,6 @@
 # Written by E. Montes
 # Aug 19, 2019
 
-setwd("C:/Users/Enrique/obis_extractions")
-
 library(robis)
 library(rgdal) # for `ogrInfo()` and `readOGR()`
 library(tools) # for `file_path_sans_ext()`
@@ -68,10 +66,17 @@ dat.sel_18 <- subset(dat.coast, LME_NUMBER == 8) # Scotian Shelf
 dat.sel_19 <- subset(dat.coast, LME_NUMBER == 7) # NE US
 dat.sel_20 <- subset(dat.coast, LME_NUMBER == 6) # SE US
 dat.sel_21 <- subset(dat.coast, LME_NUMBER == 10) # Hawaii
+dat.sel_22 <- subset(dat.coast, LME_NUMBER == 63) # Hudson Bay Complex
+dat.sel_23 <- subset(dat.coast, LME_NUMBER == 19) # Greenland Sea
+dat.sel_24 <- subset(dat.coast, LME_NUMBER == 21) # Norwegian Sea
+dat.sel_25 <- subset(dat.coast, LME_NUMBER == 20) # Barents Sea
+dat.sel_26 <- subset(dat.coast, LME_NUMBER == 58) # Kara Sea
+dat.sel_27 <- subset(dat.coast, LME_NUMBER == 57) # Laptev Sea
+dat.sel_28 <- subset(dat.coast, LME_NUMBER == 56) # E. Sibarian Sea
 
 
-xlims <- c(-180, -10)
-ylims <- c(-70, 80)
+xlims <- c(-180, 175)
+ylims <- c(0, 90)
 
 # World map
 mapWorld <- borders(database = "world", colour="gray50", fill="gray50")
@@ -89,69 +94,90 @@ p0
 
 # highlight LME of interest
 p.sel <- p0  + mapWorld + 
-  geom_path(data = dat.sel_1, 
-            aes(x = long, y = lat, group = group), 
-            colour = "goldenrod2", size = 0.75) +
-  geom_path(data = dat.sel_2,
-            aes(x = long, y = lat, group = group),
-            colour = "coral3", size = 0.75) +
-  geom_path(data = dat.sel_3,
-            aes(x = long, y = lat, group = group),
-            colour = "coral", size = 0.75) +
-  geom_path(data = dat.sel_4,
-            aes(x = long, y = lat, group = group),
-            colour = "chocolate4", size = 0.75) +
-  geom_path(data = dat.sel_5,
-            aes(x = long, y = lat, group = group),
-            colour = "chocolate1", size = 0.75) +
-  geom_path(data = dat.sel_6,
-            aes(x = long, y = lat, group = group),
-            colour = "chartreuse4", size = 0.75) +
-  geom_path(data = dat.sel_7,
-            aes(x = long, y = lat, group = group),
-            colour = "chartreuse", size = 0.75) +
-  geom_path(data = dat.sel_8,
-            aes(x = long, y = lat, group = group),
-            colour = "cadetblue1", size = 0.75) +
-  geom_path(data = dat.sel_9,
-            aes(x = long, y = lat, group = group),
-            colour = "cadetblue4", size = 0.75) +
-  geom_path(data = dat.sel_10,
-            aes(x = long, y = lat, group = group),
-            colour = "brown3", size = 0.75) +
+  # geom_path(data = dat.sel_1, 
+  #           aes(x = long, y = lat, group = group), 
+  #           colour = "goldenrod2", size = 0.75) +
+  # geom_path(data = dat.sel_2,
+  #           aes(x = long, y = lat, group = group),
+  #           colour = "coral3", size = 0.75) +
+  # geom_path(data = dat.sel_3,
+  #           aes(x = long, y = lat, group = group),
+  #           colour = "coral", size = 0.75) +
+  # geom_path(data = dat.sel_4,
+  #           aes(x = long, y = lat, group = group),
+  #           colour = "chocolate4", size = 0.75) +
+  # geom_path(data = dat.sel_5,
+  #           aes(x = long, y = lat, group = group),
+  #           colour = "chocolate1", size = 0.75) +
+  # geom_path(data = dat.sel_6,
+  #           aes(x = long, y = lat, group = group),
+  #           colour = "chartreuse4", size = 0.75) +
+  # geom_path(data = dat.sel_7,
+  #           aes(x = long, y = lat, group = group),
+  #           colour = "chartreuse", size = 0.75) +
+  # geom_path(data = dat.sel_8,
+  #           aes(x = long, y = lat, group = group),
+  #           colour = "cadetblue1", size = 0.75) +
+  # geom_path(data = dat.sel_9,
+  #           aes(x = long, y = lat, group = group),
+  #           colour = "cadetblue4", size = 0.75) +
+  # geom_path(data = dat.sel_10,
+  #           aes(x = long, y = lat, group = group),
+  #           colour = "brown3", size = 0.75) +
   geom_path(data = dat.sel_11,
             aes(x = long, y = lat, group = group),
-            colour = "royalblue1", size = 0.75) +
+            colour = "red", size = 0.75) +
   geom_path(data = dat.sel_12,
             aes(x = long, y = lat, group = group),
             colour = "blue", size = 0.75) +
   geom_path(data = dat.sel_13,
             aes(x = long, y = lat, group = group),
-            colour = "red", size = 0.75) +
+            colour = "green", size = 0.75) +
   geom_path(data = dat.sel_14,
             aes(x = long, y = lat, group = group),
-            colour = "aquamarine1", size = 0.75) +
+            colour = "red", size = 0.75) +
   geom_path(data = dat.sel_15,
             aes(x = long, y = lat, group = group),
-            colour = "olivedrab2", size = 0.75) +
+            colour = "blue", size = 0.75) +
   geom_path(data = dat.sel_16,
             aes(x = long, y = lat, group = group),
-            colour = "brown4", size = 0.75) +
+            colour = "green", size = 0.75) +
   geom_path(data = dat.sel_17,
             aes(x = long, y = lat, group = group),
-            colour = "seagreen2", size = 0.75) +
-  geom_path(data = dat.sel_18,
+            colour = "red", size = 0.75) +
+  # geom_path(data = dat.sel_18,
+  #           aes(x = long, y = lat, group = group),
+  #           colour = "blue", size = 0.75) +
+  # geom_path(data = dat.sel_19,
+  #           aes(x = long, y = lat, group = group),
+  #           colour = "red", size = 0.75) +
+  # geom_path(data = dat.sel_20,
+  #           aes(x = long, y = lat, group = group),
+  #           colour = "blue", size = 0.75) + 
+  # geom_path(data = dat.sel_21,
+  #           aes(x = long, y = lat, group = group),
+  #           colour = "red", size = 0.75)
+  geom_path(data = dat.sel_22,
             aes(x = long, y = lat, group = group),
-            colour = "cyan", size = 0.75) +
-  geom_path(data = dat.sel_19,
+            colour = "blue", size = 0.75) +
+  geom_path(data = dat.sel_23,
             aes(x = long, y = lat, group = group),
-            colour = "blueviolet", size = 0.75) +
-  geom_path(data = dat.sel_20,
+            colour = "green", size = 0.75) +
+  geom_path(data = dat.sel_24,
             aes(x = long, y = lat, group = group),
-            colour = "darkorange1", size = 0.75) + 
-  geom_path(data = dat.sel_21,
+            colour = "red", size = 0.75) +
+  geom_path(data = dat.sel_25,
             aes(x = long, y = lat, group = group),
-            colour = "hotpink", size = 0.75)
+            colour = "blue", size = 0.75) +
+  geom_path(data = dat.sel_26,
+            aes(x = long, y = lat, group = group),
+            colour = "green", size = 0.75) +
+  geom_path(data = dat.sel_27,
+            aes(x = long, y = lat, group = group),
+            colour = "red", size = 0.75) +
+  geom_path(data = dat.sel_28,
+            aes(x = long, y = lat, group = group),
+            colour = "blue", size = 0.75)
 p.sel
 
 #######################################################################################################################
