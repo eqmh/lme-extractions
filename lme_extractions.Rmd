@@ -9,7 +9,7 @@ Written by E. Montes (emontesh@usf.edu) on Auguts 28, 2020.
 
 This code creates a map showing the boundaries of a selected Large Marine Ecosystems ([LME](http://lme.edc.uri.edu/index.php/lme-introduction)) and extracts records for selected taxa from the [Ocean Biodiversity Information System (OBIS)](https://obis.org/) using [robis](https://obis.org/manual/accessr/) tools. 
 
-
+# Step 1
 First, let's load required libraries
 ```{r}
 library(robis)
@@ -24,7 +24,7 @@ library(leaflet)
 library(lubridate)
 ```
 
-
+# Step 2
 Now let's provide the function fortify.shape(), which puts the shapefile data in the object class data.frame, so that it can be used by ggplot2, and extract portions of the data (from the fortified data.frame object) for a smaller domain
 ```{r}
 fortify.shape <- function(x){
@@ -42,7 +42,7 @@ subset.shape <- function(x, domain){
 }
 ```
 
-
+# Step 3
 Let's read the shapefile "LMEs66.shp" containing all polygons, fortify the global data and then extract domain. See numbers [here](http://lme.edc.uri.edu/index.php/lme-introduction)
 ```{r}
 path.lme.coast <- ("~/lme-extractions/data")
@@ -84,7 +84,7 @@ dat.sel_27 <- subset(dat.coast, LME_NUMBER == 57) # Laptev Sea
 dat.sel_28 <- subset(dat.coast, LME_NUMBER == 56) # E. Sibarian Sea
 ```
 
-
+# Step 4
 Plotting the coastline and selected LME boundaries
 ```{r}
 # Define lat/lon limits here
@@ -114,7 +114,7 @@ p.sel
 
 ```
 
-
+# Step 5
 This section extracts OBIS records of using the "occurrence" function or downloaded data, and plots time series or pie charts with distributions of large groups (annelids, molluscs, plants and echinoderms) in the upper 100m.
 ```{r}
 # Set extraction params
