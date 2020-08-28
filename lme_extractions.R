@@ -1,4 +1,4 @@
-# This script plots LME's and observations inside LME's
+# This script extracts and plots OBIS records inside Large Marine Ecosystems (LME)
 # Written by E. Montes
 # Aug 19, 2019
 
@@ -36,7 +36,7 @@ subset.shape <- function(x, domain){
 
 # Specify the local directory and name of the Natural Earth shapefile (previously downloaded) 
 # and read its contents (global coastline data)
-path.lme.coast <- ("/Users/Enrique/obis_extractions/LME66")
+path.lme.coast <- ("~/lme-extractions/data")
 fnam.lme.coast <- "LMEs66.shp"
 dat.coast <- readOGR(dsn = path.lme.coast, 
                      layer = file_path_sans_ext(fnam.lme.coast))
@@ -75,14 +75,14 @@ dat.sel_27 <- subset(dat.coast, LME_NUMBER == 57) # Laptev Sea
 dat.sel_28 <- subset(dat.coast, LME_NUMBER == 56) # E. Sibarian Sea
 
 
-xlims <- c(-180, 175)
-ylims <- c(0, 90)
+xlims <- c(-150, -25)
+ylims <- c(-60, 60)
 
 # World map
 mapWorld <- borders(database = "world", colour="gray50", fill="gray50")
 
 # Generate a base map with the coastline:
-p0 <- ggplot() + theme(text = element_text(size=25)) + 
+p0 <- ggplot() + theme(text = element_text(size=18)) + 
   geom_path(data = dat.coast, aes(x = long, y = lat, group = group), 
             color = "black", size = 0.25) + 
   coord_map(projection = "mercator") + 
@@ -93,91 +93,91 @@ p0 <- ggplot() + theme(text = element_text(size=25)) +
 p0
 
 # highlight LME of interest
-p.sel <- p0  + mapWorld + 
+p.sel <- p0 +
   # geom_path(data = dat.sel_1, 
   #           aes(x = long, y = lat, group = group), 
-  #           colour = "goldenrod2", size = 0.75) +
+  #           colour = "goldenrod2", size = 0.75) 
   # geom_path(data = dat.sel_2,
   #           aes(x = long, y = lat, group = group),
-  #           colour = "coral3", size = 0.75) +
+  #           colour = "coral3", size = 0.75) 
   # geom_path(data = dat.sel_3,
   #           aes(x = long, y = lat, group = group),
-  #           colour = "coral", size = 0.75) +
+  #           colour = "chocolate4", size = 0.75) 
   # geom_path(data = dat.sel_4,
-  #           aes(x = long, y = lat, group = group),
-  #           colour = "chocolate4", size = 0.75) +
+  #         aes(x = long, y = lat, group = group),
+  #         colour = "coral", size = 1) 
   # geom_path(data = dat.sel_5,
   #           aes(x = long, y = lat, group = group),
-  #           colour = "chocolate1", size = 0.75) +
-  # geom_path(data = dat.sel_6,
-  #           aes(x = long, y = lat, group = group),
-  #           colour = "chartreuse4", size = 0.75) +
+  #           colour = "chocolate1", size = 0.75) 
+  geom_path(data = dat.sel_6,
+            aes(x = long, y = lat, group = group),
+            colour = "chartreuse4", size = 1) +
   # geom_path(data = dat.sel_7,
   #           aes(x = long, y = lat, group = group),
-  #           colour = "chartreuse", size = 0.75) +
-  # geom_path(data = dat.sel_8,
-  #           aes(x = long, y = lat, group = group),
-  #           colour = "cadetblue1", size = 0.75) +
+  #           colour = "chartreuse", size = 0.75) 
+  geom_path(data = dat.sel_8,
+            aes(x = long, y = lat, group = group),
+            colour = "coral", size = 0.75)
   # geom_path(data = dat.sel_9,
   #           aes(x = long, y = lat, group = group),
-  #           colour = "cadetblue4", size = 0.75) +
+  #           colour = "cadetblue4", size = 0.75) 
   # geom_path(data = dat.sel_10,
   #           aes(x = long, y = lat, group = group),
-  #           colour = "brown3", size = 0.75) +
-  geom_path(data = dat.sel_11,
-            aes(x = long, y = lat, group = group),
-            colour = "red", size = 0.75) +
-  geom_path(data = dat.sel_12,
-            aes(x = long, y = lat, group = group),
-            colour = "blue", size = 0.75) +
-  geom_path(data = dat.sel_13,
-            aes(x = long, y = lat, group = group),
-            colour = "green", size = 0.75) +
-  geom_path(data = dat.sel_14,
-            aes(x = long, y = lat, group = group),
-            colour = "red", size = 0.75) +
-  geom_path(data = dat.sel_15,
-            aes(x = long, y = lat, group = group),
-            colour = "blue", size = 0.75) +
-  geom_path(data = dat.sel_16,
-            aes(x = long, y = lat, group = group),
-            colour = "green", size = 0.75) +
-  geom_path(data = dat.sel_17,
-            aes(x = long, y = lat, group = group),
-            colour = "red", size = 0.75) +
+  #           colour = "brown3", size = 0.75) 
+  # geom_path(data = dat.sel_11,
+  #           aes(x = long, y = lat, group = group),
+  #           colour = "red", size = 0.75) 
+  # geom_path(data = dat.sel_12,
+  #           aes(x = long, y = lat, group = group),
+  #           colour = "blue", size = 0.75) 
+  # geom_path(data = dat.sel_13,
+  #           aes(x = long, y = lat, group = group),
+  #           colour = "green", size = 0.75) 
+  # geom_path(data = dat.sel_14,
+  #           aes(x = long, y = lat, group = group),
+  #           colour = "red", size = 0.75) 
+  # geom_path(data = dat.sel_15,
+  #           aes(x = long, y = lat, group = group),
+  #           colour = "blue", size = 0.75) 
+  # geom_path(data = dat.sel_16,
+  #           aes(x = long, y = lat, group = group),
+  #           colour = "green", size = 0.75) 
+  # geom_path(data = dat.sel_17,
+  #           aes(x = long, y = lat, group = group),
+  #           colour = "red", size = 0.75) 
   # geom_path(data = dat.sel_18,
   #           aes(x = long, y = lat, group = group),
   #           colour = "blue", size = 0.75) +
   # geom_path(data = dat.sel_19,
   #           aes(x = long, y = lat, group = group),
-  #           colour = "red", size = 0.75) +
+  #           colour = "red", size = 0.75) 
   # geom_path(data = dat.sel_20,
   #           aes(x = long, y = lat, group = group),
-  #           colour = "blue", size = 0.75) + 
+  #           colour = "blue", size = 0.75)  
   # geom_path(data = dat.sel_21,
   #           aes(x = long, y = lat, group = group),
   #           colour = "red", size = 0.75)
-  geom_path(data = dat.sel_22,
-            aes(x = long, y = lat, group = group),
-            colour = "blue", size = 0.75) +
-  geom_path(data = dat.sel_23,
-            aes(x = long, y = lat, group = group),
-            colour = "green", size = 0.75) +
-  geom_path(data = dat.sel_24,
-            aes(x = long, y = lat, group = group),
-            colour = "red", size = 0.75) +
-  geom_path(data = dat.sel_25,
-            aes(x = long, y = lat, group = group),
-            colour = "blue", size = 0.75) +
-  geom_path(data = dat.sel_26,
-            aes(x = long, y = lat, group = group),
-            colour = "green", size = 0.75) +
-  geom_path(data = dat.sel_27,
-            aes(x = long, y = lat, group = group),
-            colour = "red", size = 0.75) +
-  geom_path(data = dat.sel_28,
-            aes(x = long, y = lat, group = group),
-            colour = "blue", size = 0.75)
+  # geom_path(data = dat.sel_22,
+  #           aes(x = long, y = lat, group = group),
+  #           colour = "blue", size = 0.75) 
+  # geom_path(data = dat.sel_23,
+  #           aes(x = long, y = lat, group = group),
+  #           colour = "green", size = 0.75) 
+  # geom_path(data = dat.sel_24,
+  #           aes(x = long, y = lat, group = group),
+  #           colour = "red", size = 0.75) 
+  # geom_path(data = dat.sel_25,
+  #           aes(x = long, y = lat, group = group),
+  #           colour = "blue", size = 0.75) 
+  # geom_path(data = dat.sel_26,
+  #           aes(x = long, y = lat, group = group),
+  #           colour = "green", size = 0.75) 
+  # geom_path(data = dat.sel_27,
+  #           aes(x = long, y = lat, group = group),
+  #           colour = "red", size = 0.75) 
+  # geom_path(data = dat.sel_28,
+  #           aes(x = long, y = lat, group = group),
+  #           colour = "blue", size = 0.75)
 p.sel
 
 #######################################################################################################################
@@ -190,11 +190,11 @@ p.sel
 
 # Set extraction params
 # LME codes (from OBIS URL)
-# N Brazil=40017; E Brazil=40016; S Brazil=40015; Patagonia=40014; Humboldt=40013; caribbean=40012; 
+# N Brazil=40017; E Brazil=40016; S Brazil=40015; Patagonia=40014; Humboldt=40013; Caribbean=40012; 
 # P Ctral A=40011; CCS=40003; GoA=40002; NE USA=40007; E Bearing=40001; Canada E Arctic=40018; GoM=40005; 
 # Chukchi=40054; SE USA=40006; Labrador=40009; Scotian S=40008
 
-area = 40015  
+area = 40005  
 depth = 100
 mol_code = 51
 echi_code = 1806
