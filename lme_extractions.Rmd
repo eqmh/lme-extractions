@@ -22,6 +22,7 @@ library(tidyr) # for `gather()`
 library(readr) # for `write_tsv()`
 library(leaflet)
 library(lubridate)
+library(sf)
 ```
 
 # Step 2
@@ -45,10 +46,19 @@ subset.shape <- function(x, domain){
 # Step 3
 Let's read the shapefile "LMEs66.shp" containing all polygons, fortify the global data and then extract domain. See numbers [here](http://lme.edc.uri.edu/index.php/lme-introduction)
 ```{r}
-path.lme.coast <- ("~/lme-extractions/data")
-fnam.lme.coast <- "LMEs66.shp"
-dat.coast <- readOGR(dsn = path.lme.coast, 
-                     layer = file_path_sans_ext(fnam.lme.coast))
+# path.lme.coast <- ("~/Documents/lme-extractions/data")
+# fnam.lme.coast <- "LMEs66.shp"
+# dat.coast <- readOGR(dsn = path.lme.coast, 
+#                      layer = file_path_sans_ext(fnam.lme.coast))
+
+# Set the working directory
+setwd("~/lme-extractions/data")
+
+# Read the shapefile
+lmes <- st_read("LMEs66.shp")
+
+# Print the summary of the shapefile
+print(lmes)
 
 # fortify the global data and then extract domain
 dat.coast <- fortify.shape(dat.coast) # a 410951x8 dataframe
