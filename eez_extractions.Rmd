@@ -81,15 +81,19 @@ plan_code = 3
 ## read data from OBIS
 ## Molluscs
 molluscs= occurrence(areaid = area, taxonid = mol_code, enddepth = depth) 
+print(molluscs$species)
 
 ## Ehinoderms
 echinos = occurrence(areaid = area, taxonid = echi_code, enddepth = depth)
+print(echinos$species)
 
 ## Annelida
 annel = occurrence(areaid = area, taxonid = anne_code, enddepth = depth)
+print(annel$species)
 
 ## Platae
 plants = occurrence(areaid = area, taxonid = plan_code, enddepth = depth)
+print(plants$species)
 
 ## Merge the data frames
 sub_mollusc <- data.frame(molluscs$date_year, molluscs$phylum) 

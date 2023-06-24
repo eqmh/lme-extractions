@@ -1738,16 +1738,137 @@ plan_code = 3
 ## Molluscs
 molluscs= occurrence(areaid = area, taxonid = mol_code, enddepth = depth) </code></pre>
 <pre><code>## Retrieved 77 records of approximately 77 (100%)</code></pre>
+<pre class="r"><code>print(molluscs$species)</code></pre>
+<pre><code>##  [1] &quot;Vasum caestus&quot;              &quot;Leptopecten velero&quot;        
+##  [3] NA                           &quot;Neoterebra aspera&quot;         
+##  [5] &quot;Compsodrillia olssoni&quot;      &quot;Architectonica karsteni&quot;   
+##  [7] &quot;Calliostoma mcleani&quot;        &quot;Scurria variabilis&quot;        
+##  [9] &quot;Donax obesulus&quot;             NA                          
+## [11] &quot;Leptopecten tumbezensis&quot;    &quot;Neoterebra aspera&quot;         
+## [13] &quot;Eulima paria&quot;               &quot;Pinctada mazatlanica&quot;      
+## [15] &quot;Conus recurvus&quot;             &quot;Olivella peterseni&quot;        
+## [17] &quot;Phyllonotus regius&quot;         &quot;Vasum caestus&quot;             
+## [19] &quot;Argopecten ventricosus&quot;     NA                          
+## [21] &quot;Pinctada mazatlanica&quot;       &quot;Argopecten ventricosus&quot;    
+## [23] NA                           &quot;Simnialena rufa&quot;           
+## [25] &quot;Anadara aequatorialis&quot;      &quot;Metaphos minusculus&quot;       
+## [27] &quot;Leptopecten biolleyi&quot;       &quot;Vasum caestus&quot;             
+## [29] NA                           NA                          
+## [31] &quot;Prunum curtum&quot;              NA                          
+## [33] &quot;Acteon traskii&quot;             NA                          
+## [35] &quot;Prunum macleani&quot;            &quot;Spathochlamys vestalis&quot;    
+## [37] &quot;Argopecten ventricosus&quot;     &quot;Pinctada mazatlanica&quot;      
+## [39] &quot;Argopecten ventricosus&quot;     NA                          
+## [41] &quot;Argopecten ventricosus&quot;     NA                          
+## [43] &quot;Galeropsis monodonta&quot;       &quot;Eulithidium phasianella&quot;   
+## [45] &quot;Pinctada mazatlanica&quot;       NA                          
+## [47] NA                           &quot;Pinctada mazatlanica&quot;      
+## [49] NA                           &quot;Acar gradata&quot;              
+## [51] &quot;Eunaticina heimi&quot;           &quot;Solariella triplostephanus&quot;
+## [53] &quot;Vasum caestus&quot;              NA                          
+## [55] NA                           &quot;Caecum elegantissimum&quot;     
+## [57] NA                           NA                          
+## [59] NA                           &quot;Platycythara electra&quot;      
+## [61] &quot;Leptopecten tumbezensis&quot;    NA                          
+## [63] NA                           &quot;Leptopecten velero&quot;        
+## [65] &quot;Hexaplex princeps&quot;          &quot;Simnia arcuata&quot;            
+## [67] &quot;Leptopecten biolleyi&quot;       &quot;Hexaplex princeps&quot;         
+## [69] &quot;Mazatlania fulgurata&quot;       NA                          
+## [71] NA                           NA                          
+## [73] &quot;Eulima panamensis&quot;          &quot;Prunum macleani&quot;           
+## [75] &quot;Vokesimurex elenensis&quot;      &quot;Pinctada mazatlanica&quot;      
+## [77] NA</code></pre>
 <pre class="r"><code>## Ehinoderms
 echinos = occurrence(areaid = area, taxonid = echi_code, enddepth = depth)</code></pre>
 <pre><code>## Retrieved 68 records of approximately 68 (100%)</code></pre>
+<pre class="r"><code>print(echinos$species)</code></pre>
+<pre><code>##  [1] &quot;Diadema mexicanum&quot;               &quot;Cucumaria flamma&quot;               
+##  [3] &quot;Cucumaria flamma&quot;                &quot;Phataria unifascialis&quot;          
+##  [5] &quot;Pharia pyramidata&quot;               &quot;Eucidaris thouarsii&quot;            
+##  [7] &quot;Pentaceraster cumingi&quot;           &quot;Pharia pyramidata&quot;              
+##  [9] NA                                &quot;Phataria unifascialis&quot;          
+## [11] &quot;Tripneustes depressus&quot;           &quot;Diadema mexicanum&quot;              
+## [13] &quot;Eucidaris thouarsii&quot;             &quot;Nidorellia armata&quot;              
+## [15] &quot;Diadema mexicanum&quot;               &quot;Eucidaris thouarsii&quot;            
+## [17] &quot;Diadema mexicanum&quot;               &quot;Holothuria (Vaneyothuria) zacae&quot;
+## [19] &quot;Eucidaris thouarsii&quot;             &quot;Cucumaria flamma&quot;               
+## [21] &quot;Diadema mexicanum&quot;               &quot;Phataria unifascialis&quot;          
+## [23] &quot;Pentaceraster cumingi&quot;           &quot;Neopentamera anexigua&quot;          
+## [25] &quot;Eucidaris thouarsii&quot;             &quot;Astropyga pulvinata&quot;            
+## [27] &quot;Eucidaris thouarsii&quot;             &quot;Phataria unifascialis&quot;          
+## [29] NA                                &quot;Echinometra vanbrunti&quot;          
+## [31] &quot;Eucidaris thouarsii&quot;             &quot;Paulia horrida&quot;                 
+## [33] &quot;Thyone bidentata&quot;                &quot;Astropyga pulvinata&quot;            
+## [35] &quot;Pharia pyramidata&quot;               &quot;Echinometra vanbrunti&quot;          
+## [37] &quot;Diadema mexicanum&quot;               &quot;Phataria unifascialis&quot;          
+## [39] NA                                &quot;Pharia pyramidata&quot;              
+## [41] &quot;Nidorellia armata&quot;               &quot;Tripneustes depressus&quot;          
+## [43] &quot;Phataria unifascialis&quot;           &quot;Cucumaria flamma&quot;               
+## [45] NA                                NA                               
+## [47] &quot;Phataria unifascialis&quot;           &quot;Cucumaria flamma&quot;               
+## [49] &quot;Centrostephanus coronatus&quot;       &quot;Sclerasterias alexandri&quot;        
+## [51] &quot;Isostichopus fuscus&quot;             &quot;Cucumaria flamma&quot;               
+## [53] &quot;Echinometra vanbrunti&quot;           &quot;Pharia pyramidata&quot;              
+## [55] &quot;Pharia pyramidata&quot;               &quot;Diadema mexicanum&quot;              
+## [57] &quot;Phataria unifascialis&quot;           &quot;Centrostephanus coronatus&quot;      
+## [59] &quot;Pharia pyramidata&quot;               &quot;Diadema mexicanum&quot;              
+## [61] &quot;Pharia pyramidata&quot;               &quot;Echinometra vanbrunti&quot;          
+## [63] &quot;Pentaceraster cumingi&quot;           &quot;Phataria unifascialis&quot;          
+## [65] &quot;Echinometra vanbrunti&quot;           &quot;Centrostephanus coronatus&quot;      
+## [67] &quot;Eucidaris thouarsii&quot;             &quot;Pharia pyramidata&quot;</code></pre>
 <pre class="r"><code>## Annelida
 annel = occurrence(areaid = area, taxonid = anne_code, enddepth = depth)</code></pre>
 <pre><code>## Retrieved 87 records of approximately 87 (100%)</code></pre>
+<pre class="r"><code>print(annel$species)</code></pre>
+<pre><code>##  [1] NA                            &quot;Hydroides crucigera&quot;        
+##  [3] NA                            &quot;Pyrgopolon ctenactis&quot;       
+##  [5] NA                            NA                           
+##  [7] &quot;Lepidonotus margaritaceus&quot;   NA                           
+##  [9] &quot;Hydroides brachyacantha&quot;     &quot;Spirobranchus minutus&quot;      
+## [11] &quot;Owenia fusiformis&quot;           &quot;Caulleriella ecuadoriana&quot;   
+## [13] &quot;Boccardia tricuspa&quot;          &quot;Dipolydora giardi&quot;          
+## [15] NA                            NA                           
+## [17] NA                            &quot;Pelagobia longicirrata&quot;     
+## [19] &quot;Polydora ecuadoriana&quot;        &quot;Polydora ecuadoriana&quot;       
+## [21] &quot;Boccardiella bihamata&quot;       NA                           
+## [23] &quot;Naineris chilensis&quot;          &quot;Asclerocheilus tropicus&quot;    
+## [25] NA                            NA                           
+## [27] NA                            &quot;Hyboscolex equatorialis&quot;    
+## [29] NA                            NA                           
+## [31] NA                            &quot;Vermiliopsis annulata&quot;      
+## [33] &quot;Polydora ecuadoriana&quot;        &quot;Rhynchonereella angelini&quot;   
+## [35] NA                            &quot;Dipolydora socialis&quot;        
+## [37] NA                            NA                           
+## [39] &quot;Dipolydora socialis&quot;         &quot;Hydroides crucigera&quot;        
+## [41] NA                            NA                           
+## [43] &quot;Crucigera websteri&quot;          &quot;Hydroides ochotereana&quot;      
+## [45] NA                            NA                           
+## [47] NA                            &quot;Hyboscolex equatorialis&quot;    
+## [49] &quot;Polydora websteri&quot;           &quot;Spirobranchus minutus&quot;      
+## [51] &quot;Paleaequor psamathe&quot;         &quot;Nicon orensanzi&quot;            
+## [53] &quot;Hydroides brachyacantha&quot;     &quot;Dipolydora socialis&quot;        
+## [55] &quot;Naineris laevigata&quot;          NA                           
+## [57] &quot;Boccardiella bihamata&quot;       &quot;Polydora cirrosa&quot;           
+## [59] &quot;Pelagobia longicirrata&quot;      NA                           
+## [61] &quot;Spirobranchus giganteus&quot;     NA                           
+## [63] &quot;Dipolydora socialis&quot;         NA                           
+## [65] NA                            &quot;Spirobranchus minutus&quot;      
+## [67] &quot;Hyboscolex equatorialis&quot;     &quot;Hydroides brachyacantha&quot;    
+## [69] &quot;Pseudopolydora primigenia&quot;   &quot;Lopadorrhynchus brevis&quot;     
+## [71] &quot;Polydora ecuadoriana&quot;        NA                           
+## [73] &quot;Polydora ecuadoriana&quot;        NA                           
+## [75] NA                            NA                           
+## [77] &quot;Leptonereis laevis&quot;          NA                           
+## [79] &quot;Hydroides gairacensis&quot;       &quot;Pseudopolydora primigenia&quot;  
+## [81] &quot;Pseudovermilia occidentalis&quot; &quot;Hydroides brachyacantha&quot;    
+## [83] &quot;Spirobranchus minutus&quot;       &quot;Rhynchonereella angelini&quot;   
+## [85] NA                            NA                           
+## [87] &quot;Asclerocheilus tropicus&quot;</code></pre>
 <pre class="r"><code>## Platae
 plants = occurrence(areaid = area, taxonid = plan_code, enddepth = depth)
-
-## Merge the data frames
+print(plants$species)</code></pre>
+<pre><code>## NULL</code></pre>
+<pre class="r"><code>## Merge the data frames
 sub_mollusc &lt;- data.frame(molluscs$date_year, molluscs$phylum) 
 # rename column headers
 names(sub_mollusc)[names(sub_mollusc) == &quot;molluscs.date_year&quot;] &lt;- &quot;year&quot;
