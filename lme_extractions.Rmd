@@ -1,10 +1,12 @@
 ---
 title: "OBIS extractions from Large Marine Ecosystem regions"
-output: html_notebook
+output:
+  html_document:
+    df_print: paged
 ---
 # Marine Biodiversity Observation Network Pole to Pole of the Americas ([MBON Pole to Pole](https://marinebon.org/p2p/))
 
-Written by E. Montes (emontesh@usf.edu) on Auguts 28, 2020.
+Written by E. Montes (enrique.montes@noaa.gov) on Auguts 28, 2020.
 
 
 This code creates a map showing the boundaries of a selected Large Marine Ecosystems ([LME](http://lme.edc.uri.edu/index.php/lme-introduction)) and extracts records for selected taxa from the [Ocean Biodiversity Information System (OBIS)](https://obis.org/) using [robis](https://obis.org/manual/accessr/) tools. 
@@ -22,46 +24,38 @@ library(tidyr) # for `gather()`
 library(readr) # for `write_tsv()`
 library(leaflet)
 library(lubridate)
-library(sf)
 ```
 
-# Step 2
+# Step 2 - NOT NEEDED ANY MORE
 Now let's provide the function fortify.shape(), which puts the shapefile data in the object class data.frame, so that it can be used by ggplot2, and extract portions of the data (from the fortified data.frame object) for a smaller domain
-```{r}
-fortify.shape <- function(x){
-  x@data$id <- rownames(x@data)
-  x.f <- fortify(x, region = "id")
-  x.join <- inner_join(x.f, x@data, by = "id")
-}
-
-subset.shape <- function(x, domain){
-  x.subset <- filter(x, long > domain[1] & 
-                       long < domain[2] & 
-                       lat > domain[3] & 
-                       lat < domain[4])
-  x.subset
-}
-```
+# ```{r}
+# fortify.shape <- function(x){
+#   x@data$id <- rownames(x@data)
+#   x.f <- fortify(x, region = "id")
+#   x.join <- inner_join(x.f, x@data, by = "id")
+# }
+# 
+# subset.shape <- function(x, domain){
+#   x.subset <- filter(x, long > domain[1] & 
+#                        long < domain[2] & 
+#                        lat > domain[3] & 
+#                        lat < domain[4])
+#   x.subset
+# }
+# ```
 
 # Step 3
 Let's read the shapefile "LMEs66.shp" containing all polygons, fortify the global data and then extract domain. See numbers [here](http://lme.edc.uri.edu/index.php/lme-introduction)
 ```{r}
-# path.lme.coast <- ("~/Documents/lme-extractions/data")
-# fnam.lme.coast <- "LMEs66.shp"
-# dat.coast <- readOGR(dsn = path.lme.coast, 
-#                      layer = file_path_sans_ext(fnam.lme.coast))
 
-# Set the working directory
-setwd("~/lme-extractions/data")
-
-# Read the shapefile
-lmes <- st_read("LMEs66.shp")
-
-# Print the summary of the shapefile
-print(lmes)
+setwd("/Users/enrique.montes/Documents/lme-extractions/data")
+path.lme.coast <- ("~/Documents/lme-extractions/data")
+fnam.lme.coast <- "LMEs66.shp"
+dat.coast <- readOGR(dsn = path.lme.coast,
+                     layer = file_path_sans_ext(fnam.lme.coast))
 
 # fortify the global data and then extract domain
-dat.coast <- fortify.shape(dat.coast) # a 410951x8 dataframe
+# dat.coast <- fortify.shape(dat.coast) # a 410951x8 dataframe # NOT NEEDED
 
 # Specify the desired LME:
 dat.sel_1 <- subset(dat.coast, LME_NUMBER == 15) # S. Brazil. 
