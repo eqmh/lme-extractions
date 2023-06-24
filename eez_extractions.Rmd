@@ -3,6 +3,7 @@ title: "OBIS extractions from Exclusive Economic Zones"
 output:
   html_document:
     df_print: paged
+  pdf_document: default
 ---
 # Marine Biodiversity Observation Network Pole to Pole of the Americas ([MBON Pole to Pole](https://marinebon.org/p2p/))
 
@@ -13,15 +14,18 @@ This code creates a map showing the boundaries of a selected Large Marine Ecosys
 
 # Step 1
 First, let's load required libraries
-```{r}
+```{r, warning=FALSE}
 library(ggplot2)
 library(rgdal) # for `ogrInfo()` and `readOGR()`
 library(sf)
+library(tools)
+library(robis)
+library(tidyverse)
 ```
 
 # Step 2
 Load shapefile
-```{r}
+```{r, warning=FALSE}
 # Download the EEZ shapefile for the Americas
 setwd("/Users/enrique.montes/Documents/lme-extractions/EEZ_land_union_v3_202003")
 path.eez.coast <- ("~/Documents/lme-extractions/EEZ_land_union_v3_202003")
@@ -35,7 +39,7 @@ sel.eez<- subset(eez, SOVEREIGN1 == "Ecuador")
 
 # Step 3
 Plotting the coastline and selected EEZ boundaries
-```{r}
+```{r, warning=FALSE}
 # Define lat/lon limits here
 xlims <- c(-150, -25)
 ylims <- c(-60, 60)
@@ -60,7 +64,9 @@ p.sel
 
 ```
 
-```{r}
+# Step 4
+This section extracts OBIS records of using the "occurrence" function or downloaded data, and plots time series or pie charts with distributions of large groups (annelids, molluscs, plants and echinoderms) in the upper 100m.
+```{r, warning=FALSE}
 # Set extraction params
 # EEZ codes (from OBIS URL)
 # Ecuador = 58 (https://obis.org/area/58)
