@@ -203,17 +203,22 @@ groups_pie <- pie(f_tbl$freq, labels = f_tbl$group, col = cols)
 # Extract all records from an area and visualize results
 ```{r}
 obis_df <- occurrence(areaid = area)
-obis_df[complete.cases(obis_df[ , "year"]), ]
+obis_df[complete.cases(obis_df[ , "date_year"]), ]
 
 allts_plot <- ggplot() +
-  geom_histogram(data = obis_df, aes(x = date_year, fill = phylum), binwidth = 2) + 
+  geom_histogram(data = obis_df, aes(x = date_year, fill = kingdom), binwidth = 1) + 
   scale_fill_brewer(palette = "Spectral") + 
-  xlim(c(1960, 2025)) + 
+  # guides(fill="none") +
+  xlim(c(1940, 2025)) +
+  theme_minimal() +
   theme(axis.text=element_text(size=12),
         axis.title=element_text(size=14,face="bold")) +
   theme(axis.text.x = element_text(size=14, angle=0), 
         axis.text.y = element_text(size=14, angle=0))
 allts_plot
 
+last_df <- obis_df %>% 
+  filter(date_year == 2021)
+unique(last_df$datasetID)
 ```
 
